@@ -6,12 +6,12 @@
 
 ## 👥 Teama
 
-| Name        | Roll     | Department | GitHub         |
-| ------------| -------- | ---------- | -------------- |
-| Durja Das   | 52507021 | CSE        | durjadas12-eng |
-| Farha Mahi  | 52507048 | CSE        | @username      |
-| Sunzid Haque| 52507012 | CSE        | sunzid874-code |
-| Siam Ahmmed | 52507073 | CSE        | @username      |
+| Name              | Roll     | Department | GitHub         |
+| ------------------| -------- | ---------- | -------------- |
+| Durja Das         | 52507021 | CSE        | durjadas12-eng |
+| Farha Afsin Mahi  | 52507048 | CSE        | mahioops       |
+| M. Sunzid Haque   | 52507012 | CSE        | sunzid874-code |
+| Md. Siam Ahmmed   | 52507073 | CSE        |                |
 
 ---
 
