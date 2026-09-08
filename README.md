@@ -1,17 +1,17 @@
 <img src="https://i.ibb.co.com/7NrtB6Vv/image.png" />
 
-# Forkathon 2026: [Your Project Name] by [Your Team Name]
+# Forkathon 2026: [Your Project Name] by [KUET_KUMROPOTASH]
 
 > Built for ForkedArch Freshers Hackathon 2026
 
 ## 👥 Teama
 
-| Name     | Roll     | Department | GitHub    |
-| -------- | -------- | ---------- | --------- |
-| Member 1 | 2K25XXXX | CSE        | @username |
-| Member 2 | 2K25XXXX | CSE        | @username |
-| Member 3 | 2K25XXXX | CSE        | @username |
-| Member 4 | 2K25XXXX | CSE        | @username |
+| Name        | Roll     | Department | GitHub         |
+| ------------| -------- | ---------- | -------------- |
+| Durja Das   | 52507021 | CSE        | durjadas12-eng |
+| Farha Mahi  | 52507048 | CSE        | @username      |
+| Sunzid Haque| 52507012 | CSE        | sunzid874-code |
+| Siam Ahmmed | 52507073 | CSE        | @username      |
 
 ---
 
@@ -21,7 +21,7 @@
 
 > Replace this section with the problem statement assigned to your team.
 
-### 🤔 [TEAM NAME]'s Understanding
+### 🤔 [KUET_KUMROPOTASH]'s Understanding
 
 Explain the problem in your own words. You may say a story mentioning your team member names!
 
