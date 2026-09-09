@@ -5,7 +5,7 @@ import {
   CheckCircle2, User, KeyRound 
 } from 'lucide-react';
 
-export default function StudentLoginPage() {
+export default function LoginPage() {
   const [studentId, setStudentId] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -25,7 +25,7 @@ export default function StudentLoginPage() {
     e.preventDefault();
     if (!studentId || !password) {
       setStatus('error');
-      setErrorMessage('অনুগ্রহ করে স্টুডেন্ট আইডি ও পাসওয়ার্ড দিন!');
+      setErrorMessage('Please enter your Student ID and Password.');
       return;
     }
 
@@ -48,7 +48,7 @@ export default function StudentLoginPage() {
       } else {
         setLoading(false);
         setStatus('error');
-        setErrorMessage('পাসওয়ার্ডটি ভুল হয়েছে! আবার চেষ্টা করুন।');
+        setErrorMessage('Password is incorrect. Please try again.');
       }
     }, 2400);
   };

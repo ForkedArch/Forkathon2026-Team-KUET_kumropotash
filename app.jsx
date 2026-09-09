@@ -1,9 +1,10 @@
-import StudentLoginPage from './pages/StudentLoginPage'; // আপনার ফাইলের লোকেশন ও নাম অনুযায়ী দিন
+
+import LoginPage from './pages/LoginPage'; // আপনার ফাইলের লোকেশন ও নাম অনুযায়ী দিন
 
 function App() {
   return (
     <div>
-      <StudentLoginPage />
+      <LoginPage />
     </div>
   );
 }
