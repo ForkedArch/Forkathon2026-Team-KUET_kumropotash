@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Cafeteria - Admin Portal</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f8;
+            color: #1f2937;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: #ffffff;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #16a34a;
+        }
+
+        .admin-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .admin-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #16a34a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* ================= MAIN ================= */
+
+        main {
+            max-width: 1250px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        .welcome {
+            margin-bottom: 25px;
+        }
+
+        .welcome h1 {
+            font-size: 30px;
+            margin-bottom: 7px;
+        }
+
+        .welcome p {
+            color: #6b7280;
+        }
+
+        /* ================= SECTION ================= */
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* ================= OVERVIEW ================= */
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .overview-card {
+            background: white;
+            padding: 22px;
+            border-radius: 14px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .card-label {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .card-number {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .card-small {
+            margin-top: 7px;
+            color: #16a34a;
+            font-size: 13px;
+        }
+
+        /* ================= TWO COLUMN ================= */
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: white;
+            padding: 22px;
+            border-radius: 14px;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* ================= MEAL ================= */
+
+        .meal-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .meal-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .meal-detail {
+            text-align: center;
+        }
+
+        .meal-detail strong {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .meal-detail span {
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        /* ================= PREDICTION ================= */
+
+        .prediction-box {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 10px;
+        }
+
+        .prediction-number {
+            font-size: 35px;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .confidence {
+            color: #16a34a;
+            font-size: 14px;
+        }
+
+        /* ================= EVENTS ================= */
+
+        .event {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .event:last-child {
+            border-bottom: none;
+        }
+
+        .event-name {
+            font-weight: bold;
+        }
+
+        .event-date {
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .event-impact {
+            background: #fef3c7;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        /* ================= SURPLUS ================= */
+
+        .surplus-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .surplus-item:last-child {
+            border-bottom: none;
+        }
+
+        .food-name {
+            font-weight: bold;
+        }
+
+        .food-quantity {
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .surplus-status {
+            color: #16a34a;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* ================= IMPACT ================= */
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .impact-card {
+            background: white;
+            padding: 20px;
+            border-radius: 14px;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .impact-number {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .impact-label {
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        /* ================= QUICK ACTIONS ================= */
+
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        button {
+            border: none;
+            background: #16a34a;
+            color: white;
+            padding: 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #15803d;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            .overview-grid,
+            .impact-grid,
+            .actions {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 15px 20px;
+            }
+
+            main {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            🍽️ Smart<span>Cafeteria</span>
+        </div>
+
+        <div class="admin-info">
+            <div>
+                <strong>Admin</strong>
+                <br>
+                <small>Cafeteria Management</small>
+            </div>
+
+            <div class="admin-avatar">
+                A
+            </div>
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- ================= WELCOME ================= -->
+
+        <div class="welcome">
+            <h1>Admin Dashboard</h1>
+
+            <p>
+                Monitor today's cafeteria activity and manage food resources.
+            </p>
+        </div>
+
+
+        <!-- ================= TODAY'S OVERVIEW ================= -->
+
+        <section class="section">
+
+            <h2 class="section-title">
+                Today's Overview
+            </h2>
+
+            <div class="overview-grid">
+
+                <div class="overview-card">
+
+                    <div class="card-label">
+                        Expected Students
+                    </div>
+
+                    <div class="card-number">
+                        420
+                    </div>
+
+                    <div class="card-small">
+                        ↑ 5% from yesterday
+                    </div>
+
+                </div>
+
+
+                <div class="overview-card">
+
+                    <div class="card-label">
+                        Prepared Meals
+                    </div>
+
+                    <div class="card-number">
+                        400
+                    </div>
+
+                    <div class="card-small">
+                        95% of predicted demand
+                    </div>
+
+                </div>
+
+
+                <div class="overview-card">
+
+                    <div class="card-label">
+                        Remaining Meals
+                    </div>
+
+                    <div class="card-number">
+                        38
+                    </div>
+
+                    <div class="card-small">
+                        Available for redistribution
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TODAY'S MEAL + DEMAND ================= -->
+
+        <div class="two-column section">
+
+            <!-- TODAY'S MEAL -->
+
+            <section class="panel">
+
+                <h2 class="section-title">
+                    Today's Meal
+                </h2>
+
+                <div class="meal-name">
+                    🍛 Chicken Rice
+                </div>
+
+                <p>
+                    Today's main cafeteria meal
+                </p>
+
+                <div class="meal-details">
+
+                    <div class="meal-detail">
+                        <strong>400</strong>
+                        <span>Prepared</span>
+                    </div>
+
+                    <div class="meal-detail">
+                        <strong>362</strong>
+                        <span>Consumed</span>
+                    </div>
+
+                    <div class="meal-detail">
+                        <strong>38</strong>
+                        <span>Remaining</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- DEMAND PREDICTION -->
+
+            <section class="panel">
+
+                <h2 class="section-title">
+                    🤖 Demand Prediction
+                </h2>
+
+                <div class="prediction-box">
+
+                    <p>
+                        Predicted demand for tomorrow
+                    </p>
+
+                    <div class="prediction-number">
+                        410 meals
+                    </div>
+
+                    <p class="confidence">
+                        Prediction confidence: 87%
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Recommended preparation:
+                        <strong>425 meals</strong>
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- ================= SPECIAL EVENTS ================= -->
+
+        <section class="panel section">
+
+            <h2 class="section-title">
+                📅 Special Events
+            </h2>
+
+            <div class="event">
+
+                <div>
+                    <div class="event-name">
+                        University Cultural Festival
+                    </div>
+
+                    <div class="event-date">
+                        Tomorrow • Main Auditorium
+                    </div>
+                </div>
+
+                <div class="event-impact">
+                    High Impact
+                </div>
+
+            </div>
+
+
+            <div class="event">
+
+                <div>
+                    <div class="event-name">
+                        Department Seminar
+                    </div>
+
+                    <div class="event-date">
+                        Friday • Academic Building
+                    </div>
+                </div>
+
+                <div class="event-impact">
+                    Medium Impact
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SURPLUS FOOD ================= -->
+
+        <section class="panel section">
+
+            <h2 class="section-title">
+                ♻️ Surplus Food
+            </h2>
+
+            <div class="surplus-item">
+
+                <div>
+
+                    <div class="food-name">
+                        Chicken Rice
+                    </div>
+
+                    <div class="food-quantity">
+                        20 portions remaining
+                    </div>
+
+                </div>
+
+                <div class="surplus-status">
+                    Available
+                </div>
+
+            </div>
+
+
+            <div class="surplus-item">
+
+                <div>
+
+                    <div class="food-name">
+                        Vegetable Curry
+                    </div>
+
+                    <div class="food-quantity">
+                        18 portions remaining
+                    </div>
+
+                </div>
+
+                <div class="surplus-status">
+                    Available
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TODAY'S IMPACT ================= -->
+
+        <section class="section">
+
+            <h2 class="section-title">
+                🌱 Today's Impact
+            </h2>
+
+            <div class="impact-grid">
+
+                <div class="impact-card">
+
+                    <div class="impact-number">
+                        38
+                    </div>
+
+                    <div class="impact-label">
+                        Meals Saved
+                    </div>
+
+                </div>
+
+
+                <div class="impact-card">
+
+                    <div class="impact-number">
+                        25
+                    </div>
+
+                    <div class="impact-label">
+                        Meals Redistributed
+                    </div>
+
+                </div>
+
+
+                <div class="impact-card">
+
+                    <div class="impact-number">
+                        6.2%
+                    </div>
+
+                    <div class="impact-label">
+                        Waste Rate
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <section class="section">
+
+            <h2 class="section-title">
+                ⚡ Quick Actions
+            </h2>
+
+            <div class="actions">
+
+                <button onclick="addMeal()">
+                    + Add Meal
+                </button>
+
+                <button onclick="manageSurplus()">
+                    ♻️ Manage Surplus
+                </button>
+
+                <button onclick="viewPrediction()">
+                    🤖 View Prediction
+                </button>
+
+                <button onclick="viewAnalytics()">
+                    📊 View Analytics
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function addMeal() {
+            alert("Add Meal page will open here.");
+        }
+
+        function manageSurplus() {
+            alert("Surplus Food Management will open here.");
+        }
+
+        function viewPrediction() {
+            alert("Demand Prediction details will open here.");
+        }
+
+        function viewAnalytics() {
+            alert("Analytics dashboard will open here.");
+        }
+
+    </script>
+
+</body>
+</html>
