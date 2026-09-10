@@ -321,6 +321,57 @@
                 padding: 20px;
             }
         }
+        /* ================= MEAL ON/OFF ================= */
+
+.meal-status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 14px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.status-label {
+    display: block;
+    color: #6b7280;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.status {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.status.available {
+    color: #16a34a;
+}
+
+.status.unavailable {
+    color: #dc2626;
+}
+
+.toggle-btn {
+    padding: 9px 16px;
+    background: #dc2626;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.toggle-btn:hover {
+    background: #b91c1c;
+}
+
+.toggle-btn.off {
+    background: #16a34a;
+}
+
+.toggle-btn.off:hover {
+    background: #15803d;
+}
     </style>
 </head>
 
@@ -427,46 +478,64 @@
         </section>
 
 
-        <!-- ================= TODAY'S MEAL + DEMAND ================= -->
+       <!-- ================= TODAY'S MEAL ================= -->
 
-        <div class="two-column section">
+<section class="panel">
 
-            <!-- TODAY'S MEAL -->
+    <h2 class="section-title">
+        Today's Meal
+    </h2>
 
-            <section class="panel">
+    <div class="meal-name">
+        🍛 Chicken Rice
+    </div>
 
-                <h2 class="section-title">
-                    Today's Meal
-                </h2>
+    <p>
+        Today's main cafeteria meal
+    </p>
 
-                <div class="meal-name">
-                    🍛 Chicken Rice
-                </div>
+    <!-- Meal Availability Status -->
+    <div class="meal-status-row">
 
-                <p>
-                    Today's main cafeteria meal
-                </p>
+        <div>
+            <span class="status-label">Meal Status</span>
 
-                <div class="meal-details">
+            <span id="mealStatus" class="status available">
+                🟢 AVAILABLE
+            </span>
+        </div>
 
-                    <div class="meal-detail">
-                        <strong>400</strong>
-                        <span>Prepared</span>
-                    </div>
+        <button
+            id="mealToggleBtn"
+            class="toggle-btn"
+            onclick="toggleMeal()"
+        >
+            Turn OFF
+        </button>
 
-                    <div class="meal-detail">
-                        <strong>362</strong>
-                        <span>Consumed</span>
-                    </div>
+    </div>
 
-                    <div class="meal-detail">
-                        <strong>38</strong>
-                        <span>Remaining</span>
-                    </div>
 
-                </div>
+    <div class="meal-details">
 
-            </section>
+        <div class="meal-detail">
+            <strong>400</strong>
+            <span>Prepared</span>
+        </div>
+
+        <div class="meal-detail">
+            <strong>362</strong>
+            <span>Consumed</span>
+        </div>
+
+        <div class="meal-detail">
+            <strong>38</strong>
+            <span>Remaining</span>
+        </div>
+
+    </div>
+
+    </section>
 
 
             <!-- DEMAND PREDICTION -->
@@ -694,6 +763,34 @@
     <!-- ================= JAVASCRIPT ================= -->
 
     <script>
+        function toggleMeal() {
+
+    const status = document.getElementById("mealStatus");
+    const button = document.getElementById("mealToggleBtn");
+
+    if (status.classList.contains("available")) {
+
+        // Turn OFF
+        status.classList.remove("available");
+        status.classList.add("unavailable");
+
+        status.textContent = "🔴 UNAVAILABLE";
+
+        button.textContent = "Turn ON";
+        button.classList.add("off");
+
+    } else {
+
+        // Turn ON
+        status.classList.remove("unavailable");
+        status.classList.add("available");
+
+        status.textContent = "🟢 AVAILABLE";
+
+        button.textContent = "Turn OFF";
+        button.classList.remove("off");
+    }
+}
 
         function addMeal() {
             alert("Add Meal page will open here.");
