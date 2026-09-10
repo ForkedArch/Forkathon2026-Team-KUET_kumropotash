@@ -63,9 +63,6 @@ Explain the complete flow of your system.
 
 ---
 
-## 🏗️ Architecture
-
-
 ## 🏗️ System Architecture
 
 ```mermaid
