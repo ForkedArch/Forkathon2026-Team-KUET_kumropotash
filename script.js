@@ -487,3 +487,109 @@ document
 renderMeals();
 
 updateCount();
+// ================= FOOD RESCUE OFFER =================
+
+function loadRescueOffer(){
+
+    const banner =
+        document.getElementById("rescueBanner");
+
+    if(!banner) return;
+
+
+    const savedOffer =
+        localStorage.getItem("foodLoopRescueOffer");
+
+
+    if(!savedOffer){
+
+        banner.classList.remove("show");
+
+        return;
+    }
+
+
+    const offer =
+        JSON.parse(savedOffer);
+
+
+    if(!offer.active){
+
+        banner.classList.remove("show");
+
+        return;
+    }
+
+
+    banner.innerHTML = `
+
+        <div class="rescue-content">
+
+            <div>
+
+                <div class="rescue-label">
+                    ♻ FOOD RESCUE OFFER
+                </div>
+
+                <div class="rescue-title">
+                    ${offer.food} — ${offer.discount}% OFF
+                </div>
+
+                <div class="rescue-meta">
+
+                    🔢 ${offer.quantity} extra portions available
+                    <br>
+
+                    ⏰ ${formatRescueTime(offer.start)}
+                    – ${formatRescueTime(offer.end)}
+
+                    · 📍 ${offer.location}
+
+                </div>
+
+            </div>
+
+
+            <div class="rescue-discount">
+
+                <strong>
+                    ${offer.discount}%
+                </strong>
+
+                <span>
+                    DISCOUNT
+                </span>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    banner.classList.add("show");
+
+}
+
+
+function formatRescueTime(time){
+
+    if(!time) return "";
+
+    const [hour,minute] =
+        time.split(":");
+
+    let h = Number(hour);
+
+    const ampm =
+        h >= 12 ? "PM" : "AM";
+
+    h =
+        h % 12 || 12;
+
+    return `${h}:${minute} ${ampm}`;
+
+}
+
+
+loadRescueOffer();

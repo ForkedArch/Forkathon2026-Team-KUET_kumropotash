@@ -501,6 +501,22 @@
             margin-top: 12px;
             display: none;
         }
+        .student-portal-btn {
+    background: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.student-portal-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
     </style>
 </head>
 
@@ -565,6 +581,9 @@
             <div class="admin-avatar">
                 A
             </div>
+            <button onclick="goToStudentPortal()" class="student-portal-btn">
+    🎓 Student Portal →
+</button>
         </div>
 
     </header>
@@ -1108,6 +1127,25 @@
                 }
 
             });
+        function manageSurplus() {
+
+            const panel = document.getElementById("rescuePanel");
+
+            panel.style.display = "block";
+
+            panel.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+        function manageSurplus() {
+    window.location.href = "rescue.html";
+
+}
+function goToStudentPortal() {
+    window.location.href = "index.html";
+}
 
     </script>
 

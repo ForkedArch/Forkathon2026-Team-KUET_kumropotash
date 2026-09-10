@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Food Rescue — Admin</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7f4;
+    color:#17231b;
+}
+
+header{
+    background:white;
+    padding:18px 7%;
+    border-bottom:1px solid #ddd;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#16a34a;
+}
+
+.back{
+    background:#eef3ef;
+    color:#17231b;
+    padding:10px 15px;
+    border-radius:9px;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+main{
+    max-width:850px;
+    margin:45px auto;
+    padding:20px;
+}
+
+.heading{
+    margin-bottom:25px;
+}
+
+.eyebrow{
+    color:#16a34a;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+}
+
+h1{
+    font-size:38px;
+    margin:8px 0;
+}
+
+.heading p{
+    color:#68736c;
+    line-height:1.6;
+}
+
+.card{
+    background:white;
+    border:1px solid #dfe7df;
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 8px 30px rgba(0,0,0,.04);
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+label{
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+input,
+select{
+    width:100%;
+    padding:13px;
+    border:1px solid #d8e1d9;
+    border-radius:9px;
+    outline:none;
+}
+
+input:focus,
+select:focus{
+    border-color:#16a34a;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.publish{
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#16a34a;
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.publish:hover{
+    background:#15803d;
+}
+
+.preview{
+    margin-top:30px;
+    padding:22px;
+    background:#f0fdf4;
+    border-radius:14px;
+    border:1px solid #ccebd3;
+}
+
+.preview h2{
+    margin-bottom:12px;
+}
+
+.preview-offer{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.preview small{
+    display:block;
+    margin-top:7px;
+    color:#5f6d64;
+}
+
+.success{
+    display:none;
+    margin-top:18px;
+    padding:14px;
+    background:#dcfce7;
+    color:#166534;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.remove{
+    margin-top:15px;
+    background:#fee2e2;
+    color:#b91c1c;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+@media(max-width:700px){
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    h1{
+        font-size:30px;
+    }
+
+}
+/* ================= OFFER TOGGLE ================= */
+
+#offerToggleBtn {
+    margin-top: 15px;
+    padding: 11px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #dc2626;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#offerToggleBtn:hover {
+    background: #b91c1c;
+    transform: translateY(-1px);
+}
+
+/* When offer is OFF → show ON button */
+
+#offerToggleBtn.off {
+    background: #16a34a;
+}
+
+#offerToggleBtn.off:hover {
+    background: #15803d;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        🍽️ Food<span>Loop</span>
+    </div>
+
+    <button class="back" onclick="goBack()">
+        ← Admin Dashboard
+    </button>
+
+</header>
+
+
+<main>
+
+    <div class="heading">
+
+        <span class="eyebrow">
+            FOOD RESCUE MANAGEMENT
+        </span>
+
+        <h1>
+            Create a Rescue Offer ♻️
+        </h1>
+
+        <p>
+            Have extra food? Publish a limited-time discount so
+            students can rescue it instead of letting it go to waste.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="form-grid">
+
+            <div>
+                <label>Food Name</label>
+
+                <input
+                    id="foodName"
+                    type="text"
+                    placeholder="e.g. Chicken Rice"
+                >
+            </div>
+
+
+            <div>
+                <label>Extra Portions</label>
+
+                <input
+                    id="quantity"
+                    type="number"
+                    min="1"
+                    placeholder="e.g. 20"
+                >
+            </div>
+
+
+            <div>
+                <label>Discount</label>
+
+                <select id="discount">
+
+                    <option value="10">10% OFF</option>
+
+                    <option value="20" selected>
+                        20% OFF
+                    </option>
+
+                    <option value="30">
+                        30% OFF
+                    </option>
+
+                    <option value="40">
+                        40% OFF
+                    </option>
+
+                    <option value="50">
+                        50% OFF
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div>
+                <label>Location</label>
+
+                <input
+                    id="location"
+                    type="text"
+                    placeholder="e.g. Central Hall Cafeteria"
+                >
+            </div>
+
+
+            <div>
+                <label>Start Time</label>
+
+                <input
+                    id="startTime"
+                    type="time"
+                    value="15:00"
+                >
+            </div>
+
+
+            <div>
+                <label>End Time</label>
+
+                <input
+                    id="endTime"
+                    type="time"
+                    value="16:00"
+                >
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="publish"
+            onclick="publishOffer()"
+        >
+            ♻️ Publish Rescue Offer
+        </button>
+        <button id="offerToggleBtn" onclick="toggleOffer()">
+    🔴 Turn Offer OFF
+        </button>
+
+
+        <div
+            class="success"
+            id="successMessage"
+        >
+            ✓ Rescue offer published successfully!
+            Students can now see this offer on the homepage.
+        </div>
+
+
+        <div class="preview">
+
+            <h2>
+                Offer Preview
+            </h2>
+
+            <div
+                class="preview-offer"
+                id="previewOffer"
+            >
+                🍛 Chicken Rice — 20% OFF
+            </div>
+
+            <small id="previewDetails">
+                20 extra portions · 3:00 PM – 4:00 PM
+            </small>
+
+            <small id="previewLocation">
+                📍 Central Hall Cafeteria
+            </small>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+const fields = [
+    "foodName",
+    "quantity",
+    "discount",
+    "location",
+    "startTime",
+    "endTime"
+];
+
+fields.forEach(id => {
+
+    document
+        .getElementById(id)
+        .addEventListener("input", updatePreview);
+
+});
+
+
+function formatTime(time){
+
+    if(!time) return "";
+
+    const [hour,minute] = time.split(":");
+
+    let h = Number(hour);
+
+    const ampm = h >= 12 ? "PM" : "AM";
+
+    h = h % 12 || 12;
+
+    return `${h}:${minute} ${ampm}`;
+
+}
+
+
+function updatePreview(){
+
+    const food =
+        document.getElementById("foodName").value ||
+        "Chicken Rice";
+
+    const quantity =
+        document.getElementById("quantity").value ||
+        "20";
+
+    const discount =
+        document.getElementById("discount").value;
+
+    const location =
+        document.getElementById("location").value ||
+        "Central Hall Cafeteria";
+
+    const start =
+        formatTime(
+            document.getElementById("startTime").value
+        );
+
+    const end =
+        formatTime(
+            document.getElementById("endTime").value
+        );
+
+
+    document.getElementById("previewOffer").textContent =
+        `🍛 ${food} — ${discount}% OFF`;
+
+    document.getElementById("previewDetails").textContent =
+        `${quantity} extra portions · ${start} – ${end}`;
+
+    document.getElementById("previewLocation").textContent =
+        `📍 ${location}`;
+
+}
+
+
+function publishOffer(){
+
+    const food =
+        document.getElementById("foodName").value.trim();
+
+    const quantity =
+        Number(
+            document.getElementById("quantity").value
+        );
+
+    const discount =
+        document.getElementById("discount").value;
+
+    const location =
+        document.getElementById("location").value.trim();
+
+    const start =
+        document.getElementById("startTime").value;
+
+    const end =
+        document.getElementById("endTime").value;
+
+
+    if(
+        !food ||
+        !quantity ||
+        !location ||
+        !start ||
+        !end
+    ){
+
+        alert(
+            "Please fill in all the required information."
+        );
+
+        return;
+    }
+
+
+    const offer = {
+
+        food: food,
+
+        quantity: quantity,
+
+        discount: Number(discount),
+
+        location: location,
+
+        start: start,
+
+        end: end,
+
+        active: true,
+
+        createdAt: Date.now()
+
+    };
+
+
+    localStorage.setItem(
+        "foodLoopRescueOffer",
+        JSON.stringify(offer)
+    );
+
+
+    document
+        .getElementById("successMessage")
+        .style.display = "block";
+
+
+    updatePreview();
+
+}
+
+
+function goBack(){
+
+    window.location.href = "admin.html";
+
+}
+
+
+updatePreview();
+function toggleOffer() {
+
+    const offer = JSON.parse(
+        localStorage.getItem("foodLoopRescueOffer")
+    );
+
+    if (!offer) {
+        alert("No active offer found.");
+        return;
+    }
+
+    offer.active = offer.active === false;
+
+    localStorage.setItem(
+        "foodLoopRescueOffer",
+        JSON.stringify(offer)
+    );
+
+    updateOfferButton();
+
+    alert(
+        offer.active
+            ? "🔥 Offer is now ON"
+            : "🔴 Offer is now OFF"
+    );
+}
+
+
+function updateOfferButton() {
+
+    const offer =
+        JSON.parse(
+            localStorage.getItem("foodLoopRescueOffer")
+        );
+
+    const btn =
+        document.getElementById("offerToggleBtn");
+
+    if (!offer) return;
+
+    if (offer.active === false) {
+
+        btn.textContent = "🟢 Turn Offer ON";
+
+    } else {
+
+        btn.textContent = "🔴 Turn Offer OFF";
+
+    }
+}
+
+
+function updateOfferButton() {
+
+    const offer = JSON.parse(
+        localStorage.getItem("foodLoopRescueOffer")
+    );
+
+    const btn = document.getElementById("offerToggleBtn");
+
+    if (!offer) return;
+
+    if (offer.active === false) {
+
+        btn.textContent = "🟢 Turn Offer ON";
+        btn.classList.add("off");
+
+    } else {
+
+        btn.textContent = "🔴 Turn Offer OFF";
+        btn.classList.remove("off");
+
+    }
+}
+
+</script>
+
+</body>
+</html>

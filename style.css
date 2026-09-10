@@ -50,3 +50,89 @@ footer{display:flex;justify-content:space-between;color:#97a19b;font-size:9px;le
   font-size:8px;
   letter-spacing:.5px;
 }
+/* ================= FOOD RESCUE OFFER ================= */
+
+.rescue-banner{
+    display:none;
+    margin:20px auto;
+    max-width:1150px;
+    padding:25px 30px;
+    border-radius:18px;
+    background:#ecfdf3;
+    border:2px solid #86efac;
+    box-shadow:0 10px 30px rgba(22,163,74,.12);
+    position:relative;
+    overflow:hidden;
+}
+
+.rescue-banner.show{
+    display:block;
+}
+
+.rescue-banner::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    width:7px;
+    background:#16a34a;
+}
+
+.rescue-content{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+}
+
+.rescue-label{
+    color:#15803d;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    margin-bottom:6px;
+}
+
+.rescue-title{
+    font-size:29px;
+    font-weight:800;
+    margin-bottom:7px;
+}
+
+.rescue-meta{
+    color:#526158;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.rescue-discount{
+    background:#16a34a;
+    color:white;
+    padding:15px 20px;
+    border-radius:14px;
+    text-align:center;
+    min-width:130px;
+}
+
+.rescue-discount strong{
+    display:block;
+    font-size:30px;
+}
+
+.rescue-discount span{
+    font-size:12px;
+}
+
+@media(max-width:700px){
+
+    .rescue-content{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .rescue-discount{
+        width:100%;
+    }
+
+}
