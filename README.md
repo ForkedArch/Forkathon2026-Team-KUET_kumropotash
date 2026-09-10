@@ -47,6 +47,7 @@ Why does it matter?
 ---
 
 ## 💡 Our Solution
+Predict before preparing. Rescue before wasting.
 
 ### Overview
 
@@ -64,21 +65,68 @@ Explain the complete flow of your system.
 
 ## 🏗️ Architecture
 
-Add your architecture diagram here.
-Demo diagram added down below
+🍽️ Food Loop — System Architecture
 
-```text
-User
-  │
-  ▼
-Frontend
-  │
-  ▼
-Backend / API
-  │
-  ├── Database
-  │
-  └── External Services
-```
+Food Loop is a smart campus cafeteria management platform designed to reduce food waste through data-driven meal planning, student meal intentions, reservations, and surplus food rescue.
 
+The system connects students, cafeteria administrators, and the database through a centralized backend. Students can log in, select their meal intentions, reserve meals, and discover discounted surplus food. Administrators can monitor real-time demand, manage meals, publish rescue offers, and track cafeteria performance.
+
+Technology Stack:
+HTML • CSS • JavaScript • Python Flask • REST API • MongoDB Atlas
+
+🔄 Core Data Flow
+
+Student → Frontend → Flask API → MongoDB → Admin Dashboard
+
+Admin → Flask API → MongoDB → Real-time Offer → Student
+
+
+                    🍽️ FOOD LOOP
+                 KUET Campus Food System
+                           │
+                           ▼
+                  ┌─────────────────┐
+                  │   FRONTEND      │
+                  │ HTML / CSS / JS │
+                  └────────┬────────┘
+                           │
+                    HTTPS API Requests
+                           │
+                           ▼
+                  ┌─────────────────┐
+                  │  FLASK BACKEND  │
+                  │     Python      │
+                  │    REST API     │
+                  └────────┬────────┘
+                           │
+          ┌────────────────┼────────────────┐
+          │                │                │
+          ▼                ▼                ▼
+   Student Login      Meal Choice      Admin Stats
+   /api/student/      /api/meal-choice  /api/admin/
+      login                              stats
+          │                │                │
+          └────────────────┼────────────────┘
+                           ▼
+                  ┌─────────────────┐
+                  │  MongoDB Atlas  │
+                  │    Database     │
+                  └────────┬────────┘
+                           │
+             ┌─────────────┼─────────────┐
+             ▼             ▼             ▼
+          Students      Meals        Reservations
+             │             │             │
+             └─────────────┼─────────────┘
+                           ▼
+                    📊 ADMIN PORTAL
+                           │
+              ┌────────────┼────────────┐
+              ▼            ▼            ▼
+        Meal Demand    Food Rescue   Analytics
+        Prediction       Offer        & Stats
+                           │
+                           ▼
+                    🎟️ STUDENT
+                  Rescue Meal Offer
 <b>Forkathon: Freshers Hackathon 2026 presented by ForkedArch powered by XtendArena</b>
