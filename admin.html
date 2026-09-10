@@ -15,44 +15,48 @@
         }
 
         body {
-            background: #f4f6f8;
+            background: linear-gradient(135deg, #ecfeff 0%, #e0f2fe 25%, #effcf7 55%, #dffaf4 100%);
             color: #1f2937;
         }
 
         /* ================= HEADER ================= */
 
         header {
-            background: #ffffff;
+            background: linear-gradient(90deg, #0f766e, #14b8a6, #5eead4);
             padding: 18px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
         }
 
         .logo {
             font-size: 22px;
             font-weight: bold;
+            color: white;
         }
 
         .logo span {
-            color: #16a34a;
+            color: #dffdf7;
         }
 
         .admin-info {
             display: flex;
             align-items: center;
             gap: 12px;
+            color: white;
         }
 
         .admin-avatar {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
-            background: #16a34a;
+            background: rgba(255,255,255,0.22);
+            border: 2px solid rgba(255,255,255,0.7);
             color: white;
             display: flex;
             align-items: center;
@@ -70,15 +74,22 @@
 
         .welcome {
             margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 24px 26px;
+            border-radius: 18px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
         }
 
         .welcome h1 {
             font-size: 30px;
             margin-bottom: 7px;
+            color: #1f2937;
         }
 
         .welcome p {
-            color: #6b7280;
+            color: #475569;
         }
 
         /* ================= SECTION ================= */
@@ -90,6 +101,7 @@
         .section-title {
             font-size: 20px;
             margin-bottom: 15px;
+            color: #1f2937;
         }
 
         /* ================= OVERVIEW ================= */
@@ -101,14 +113,27 @@
         }
 
         .overview-card {
-            background: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
             padding: 22px;
-            border-radius: 14px;
-            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 12px 24px rgba(15, 23, 42, 0.07);
+        }
+
+        .overview-card:nth-child(1) {
+            background: linear-gradient(135deg, #ecfeff, #cffafe);
+        }
+
+        .overview-card:nth-child(2) {
+            background: linear-gradient(135deg, #f0fdf4, #d1fae5);
+        }
+
+        .overview-card:nth-child(3) {
+            background: linear-gradient(135deg, #eefcf7, #ccfbf1);
         }
 
         .card-label {
-            color: #6b7280;
+            color: #475569;
             font-size: 14px;
             margin-bottom: 10px;
         }
@@ -116,12 +141,14 @@
         .card-number {
             font-size: 30px;
             font-weight: bold;
+            color: #0f172a;
         }
 
         .card-small {
             margin-top: 7px;
             color: #16a34a;
             font-size: 13px;
+            font-weight: bold;
         }
 
         /* ================= TWO COLUMN ================= */
@@ -133,10 +160,11 @@
         }
 
         .panel {
-            background: white;
+            background: linear-gradient(180deg, #ffffff 0%, #fffdf9 100%);
             padding: 22px;
-            border-radius: 14px;
-            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 12px 22px rgba(15, 23, 42, 0.06);
         }
 
         /* ================= MEAL ================= */
@@ -145,34 +173,106 @@
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 15px;
+            color: #0f172a;
         }
 
         .meal-details {
             display: flex;
             justify-content: space-between;
-            margin-top: 15px;
+            margin-top: 18px;
+            gap: 12px;
         }
 
         .meal-detail {
             text-align: center;
+            flex: 1;
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            border-radius: 12px;
+            padding: 14px 10px;
+        }
+
+        .meal-detail:nth-child(2) {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        }
+
+        .meal-detail:nth-child(3) {
+            background: linear-gradient(135deg, #ecfdf5, #bbf7d0);
         }
 
         .meal-detail strong {
             display: block;
             font-size: 20px;
             margin-bottom: 5px;
+            color: #0f172a;
         }
 
         .meal-detail span {
-            color: #6b7280;
+            color: #475569;
             font-size: 13px;
+        }
+
+        .meal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(180px, 1fr));
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .meal-card {
+            background: linear-gradient(135deg, #ecfeff, #cffafe);
+            border: 1px solid #7dd3fc;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 10px 18px rgba(14, 165, 233, 0.08);
+        }
+
+        .meal-card:nth-child(2) {
+            background: linear-gradient(135deg, #f0fdf4, #d1fae5);
+            border-color: #86efac;
+        }
+
+        .meal-card:nth-child(3) {
+            background: linear-gradient(135deg, #ecfeff, #d9f99d);
+            border-color: #a7f3d0;
+        }
+
+        .meal-card:nth-child(4) {
+            background: linear-gradient(135deg, #ecfeff, #bae6fd);
+            border-color: #93c5fd;
+        }
+
+        .meal-card:nth-child(5) {
+            background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+            border-color: #67e8f9;
+        }
+
+        .meal-card h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .meal-card p {
+            font-size: 13px;
+            color: #475569;
+        }
+
+        .meal-tag {
+            display: inline-block;
+            margin-top: 10px;
+            background: rgba(255,255,255,0.6);
+            color: #0f172a;
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: bold;
         }
 
         /* ================= PREDICTION ================= */
 
         .prediction-box {
-            background: #f0fdf4;
-            border-radius: 12px;
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 1px solid #bbf7d0;
+            border-radius: 16px;
             padding: 18px;
             margin-top: 10px;
         }
@@ -181,11 +281,13 @@
             font-size: 35px;
             font-weight: bold;
             margin: 8px 0;
+            color: #14532d;
         }
 
         .confidence {
-            color: #16a34a;
+            color: #15803d;
             font-size: 14px;
+            font-weight: bold;
         }
 
         /* ================= EVENTS ================= */
@@ -213,10 +315,12 @@
         }
 
         .event-impact {
-            background: #fef3c7;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
             padding: 6px 10px;
             border-radius: 20px;
             font-size: 12px;
+            font-weight: bold;
+            color: #115e59;
         }
 
         /* ================= SURPLUS ================= */
@@ -235,6 +339,7 @@
 
         .food-name {
             font-weight: bold;
+            color: #111827;
         }
 
         .food-quantity {
@@ -247,6 +352,9 @@
             color: #16a34a;
             font-size: 13px;
             font-weight: bold;
+            background: #dcfce7;
+            padding: 6px 10px;
+            border-radius: 999px;
         }
 
         /* ================= IMPACT ================= */
@@ -258,21 +366,35 @@
         }
 
         .impact-card {
-            background: white;
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
             padding: 20px;
-            border-radius: 14px;
-            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
             text-align: center;
+            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
+        }
+
+        .impact-card:nth-child(1) {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+        }
+
+        .impact-card:nth-child(2) {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+        }
+
+        .impact-card:nth-child(3) {
+            background: linear-gradient(135deg, #f7fee7, #dcfce7);
         }
 
         .impact-number {
             font-size: 28px;
             font-weight: bold;
             margin: 8px 0;
+            color: #0f172a;
         }
 
         .impact-label {
-            color: #6b7280;
+            color: #475569;
             font-size: 13px;
         }
 
@@ -286,17 +408,20 @@
 
         button {
             border: none;
-            background: #16a34a;
+            background: linear-gradient(135deg, #0f766e, #14b8a6);
             color: white;
             padding: 14px;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             font-size: 14px;
             font-weight: bold;
+            box-shadow: 0 8px 16px rgba(20, 184, 166, 0.22);
+            transition: transform 0.2s ease;
         }
 
         button:hover {
-            background: #15803d;
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #115e59, #0f766e);
         }
 
         /* ================= RESPONSIVE ================= */
@@ -305,7 +430,8 @@
 
             .overview-grid,
             .impact-grid,
-            .actions {
+            .actions,
+            .meal-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -436,31 +562,63 @@
             <section class="panel">
 
                 <h2 class="section-title">
-                    Today's Meal
+                    Today's Meals
                 </h2>
 
                 <div class="meal-name">
-                    🍛 Chicken Rice
+                    🍲 Chef's Special Menu
                 </div>
 
                 <p>
-                    Today's main cafeteria meal
+                    Multiple popular meal options for students today.
                 </p>
+
+                <div class="meal-grid">
+                    <div class="meal-card">
+                        <h3>🍛 Chicken Curry Rice</h3>
+                        <p>Spicy chicken with rice and vegetables.</p>
+                        <span class="meal-tag">Popular</span>
+                    </div>
+
+                    <div class="meal-card">
+                        <h3>🥘 Vegetable Curry</h3>
+                        <p>Healthy mixed vegetables with rich curry sauce.</p>
+                        <span class="meal-tag">Veg</span>
+                    </div>
+
+                    <div class="meal-card">
+                        <h3>🍲 Lentil Soup</h3>
+                        <p>Warm and protein-rich soup for the afternoon.</p>
+                        <span class="meal-tag">Healthy</span>
+                    </div>
+
+                    <div class="meal-card">
+                        <h3>🍚 Fried Rice</h3>
+                        <p>Flavorful rice with vegetables and fried spices.</p>
+                        <span class="meal-tag">Quick</span>
+                    </div>
+
+                    <div class="meal-card">
+                        <h3>🥗 Salad Bowl</h3>
+                        <p>Fresh greens, cucumber, tomato, and dressing.</p>
+                        <span class="meal-tag">Fresh</span>
+                    </div>
+                </div>
 
                 <div class="meal-details">
 
                     <div class="meal-detail">
-                        <strong>400</strong>
+                        <strong>420</strong>
                         <span>Prepared</span>
                     </div>
 
                     <div class="meal-detail">
-                        <strong>362</strong>
+                        <strong>381</strong>
                         <span>Consumed</span>
                     </div>
 
                     <div class="meal-detail">
-                        <strong>38</strong>
+                        <strong>39</strong>
                         <span>Remaining</span>
                     </div>
 
@@ -517,11 +675,11 @@
 
                 <div>
                     <div class="event-name">
-                        University Cultural Festival
+                        University Day
                     </div>
 
                     <div class="event-date">
-                        Tomorrow • Main Auditorium
+                        Tomorrow • Main Campus
                     </div>
                 </div>
 
@@ -536,16 +694,88 @@
 
                 <div>
                     <div class="event-name">
-                        Department Seminar
+                        Friday Prayer Gathering
                     </div>
 
                     <div class="event-date">
-                        Friday • Academic Building
+                        Friday • Prayer Hall
                     </div>
                 </div>
 
                 <div class="event-impact">
                     Medium Impact
+                </div>
+
+            </div>
+
+            <div class="event">
+
+                <div>
+                    <div class="event-name">
+                        Eid Celebration
+                    </div>
+
+                    <div class="event-date">
+                        Next Week • Student Center
+                    </div>
+                </div>
+
+                <div class="event-impact">
+                    High Impact
+                </div>
+
+            </div>
+
+            <div class="event">
+
+                <div>
+                    <div class="event-name">
+                        Puja Festival
+                    </div>
+
+                    <div class="event-date">
+                        Next Week • Cultural Hall
+                    </div>
+                </div>
+
+                <div class="event-impact">
+                    Medium Impact
+                </div>
+
+            </div>
+
+            <div class="event">
+
+                <div>
+                    <div class="event-name">
+                        Christmas Celebration
+                    </div>
+
+                    <div class="event-date">
+                        December • Auditorium
+                    </div>
+                </div>
+
+                <div class="event-impact">
+                    Medium Impact
+                </div>
+
+            </div>
+
+            <div class="event">
+
+                <div>
+                    <div class="event-name">
+                        Pohela Boishakh
+                    </div>
+
+                    <div class="event-date">
+                        April • Campus Courtyard
+                    </div>
+                </div>
+
+                <div class="event-impact">
+                    High Impact
                 </div>
 
             </div>
@@ -566,7 +796,7 @@
                 <div>
 
                     <div class="food-name">
-                        Chicken Rice
+                        Chicken Curry Rice
                     </div>
 
                     <div class="food-quantity">
@@ -592,6 +822,66 @@
 
                     <div class="food-quantity">
                         18 portions remaining
+                    </div>
+
+                </div>
+
+                <div class="surplus-status">
+                    Available
+                </div>
+
+            </div>
+
+            <div class="surplus-item">
+
+                <div>
+
+                    <div class="food-name">
+                        Fried Rice
+                    </div>
+
+                    <div class="food-quantity">
+                        14 portions remaining
+                    </div>
+
+                </div>
+
+                <div class="surplus-status">
+                    Available
+                </div>
+
+            </div>
+
+            <div class="surplus-item">
+
+                <div>
+
+                    <div class="food-name">
+                        Lentil Soup
+                    </div>
+
+                    <div class="food-quantity">
+                        12 portions remaining
+                    </div>
+
+                </div>
+
+                <div class="surplus-status">
+                    Available
+                </div>
+
+            </div>
+
+            <div class="surplus-item">
+
+                <div>
+
+                    <div class="food-name">
+                        Salad Bowl
+                    </div>
+
+                    <div class="food-quantity">
+                        9 portions remaining
                     </div>
 
                 </div>
