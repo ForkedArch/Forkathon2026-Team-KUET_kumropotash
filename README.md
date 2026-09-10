@@ -19,7 +19,22 @@
 
 ### Problem Statement
 
-> Replace this section with the problem statement assigned to your team.
+> Here is the Problem Statement for  KUET_Kumropotash,
+
+The Last Plate
+
+At the end of the day, a cafeteria has trays of untouched food. Meanwhile, somewhere nearby, students are wondering whether they should order something because they don't know what will be available later.
+
+Every day, food is prepared based on guesses. Some days there isn't enough. Other days, far too much remains.
+
+Maybe we create a technology-driven approach to reduce unnecessary food waste while improving the experience for both food providers and consumers?
+
+Your system could help predict demand, track consumption, redistribute surplus, communicate availability, or encourage better decisions.
+
+And also maybe a solution if somehow leftover foods are there, the leftover foods should not have been wasted.
+
+
+Brainstorming twist: Don't focus only on reducing food. Think about the entire journey from prediction → preparation → consumption → leftovers.
 
 ### 🤔 [KUET_KUMROPOTASH]'s Understanding
 
