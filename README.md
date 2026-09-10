@@ -65,20 +65,7 @@ Explain the complete flow of your system.
 
 ## 🏗️ Architecture
 
-🍽️ Food Loop — System Architecture
 
-Food Loop is a smart campus cafeteria management platform designed to reduce food waste through data-driven meal planning, student meal intentions, reservations, and surplus food rescue.
-
-The system connects students, cafeteria administrators, and the database through a centralized backend. Students can log in, select their meal intentions, reserve meals, and discover discounted surplus food. Administrators can monitor real-time demand, manage meals, publish rescue offers, and track cafeteria performance.
-
-Technology Stack:
-HTML • CSS • JavaScript • Python Flask • REST API • MongoDB Atlas
-
-🔄 Core Data Flow
-
-Student → Frontend → Flask API → MongoDB → Admin Dashboard
-
-Admin → Flask API → MongoDB → Real-time Offer → Student
 ## 🏗️ System Architecture
 
 ```mermaid
