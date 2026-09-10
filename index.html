@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Loop — Student Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">🍴</div>
+        <div>
+          <strong>FOOD LOOP</strong>
+          <span>Food. Smarter. Together.</span>
+        </div>
+      </div>
+
+      <div class="campus-card">
+        <div class="campus-icon">KU</div>
+        <div>
+          <strong>KUET Campus</strong>
+          <span>Student dining network</span>
+        </div>
+        <button class="dots">•••</button>
+      </div>
+
+      <nav class="nav">
+        <small>WORKSPACE</small>
+        <button class="nav-item active" data-page="Overview">✦ <span>Overview</span></button>
+        <button class="nav-item" data-page="Today's Menu">🍴 <span>Today's Menu</span></button>
+        <button class="nav-item" data-page="Reservations">🎟 <span>Reservations</span><b id="navCount">0</b></button>
+        <button class="nav-item" data-page="Rescue Meals">♻ <span>Rescue Meals</span></button>
+        <button class="nav-item" data-page="My Impact">♧ <span>My Impact</span></button>
+        <button class="nav-item admin-portal-btn" id="adminPortalBtn">
+  ⚙
+  <span>Admin Portal</span>
+  <b>OWNER</b>
+</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-impact">
+          <span>This month</span>
+          <strong>18 meals rescued</strong>
+        </div>
+        <button class="user-row" id="logoutBtn">
+          <div class="avatar">SH</div>
+          <div>
+            <strong>Student 1907001</strong>
+            <span>Sign out securely</span>
+          </div>
+          <span class="logout">↪</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="title-wrap">
+          <button class="mobile-menu" id="menuBtn">☰</button>
+          <div>
+            <small>STUDENT PORTAL · TODAY</small>
+            <h1 id="pageTitle">Good morning, Sunzid.</h1>
+          </div>
+        </div>
+        <div class="top-actions">
+          <div class="search">
+            <span>⌕</span>
+            <input id="searchInput" type="text" placeholder="Search meals, stations...">
+          </div>
+          <button class="notification" id="notificationBtn">♧<i></i></button>
+        </div>
+      </header>
+
+      <div class="content">
+
+        <section class="hero">
+          <div class="hero-copy">
+            <span class="live-chip"><i></i> LIVE CAFETERIA NETWORK</span>
+            <h2>Eat what you<br>need.<br><em>Save what you<br>can.</em></h2>
+            <p>Reserve your next meal, discover surplus food, and turn small dining decisions into measurable campus impact.</p>
+            <div class="hero-buttons">
+              <button class="primary" id="menuBtnHero">Explore today's menu ↗</button>
+              <button class="secondary" id="impactBtn">View my impact ›</button>
+            </div>
+            <div class="metrics">
+              <div><strong>412</strong><span>plates saved today</span></div>
+              <div><strong>96%</strong><span>forecast confidence</span></div>
+              <div><strong>14m</strong><span>avg. rescue pickup</span></div>
+            </div>
+          </div>
+
+          <div class="plate-scene">
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="plate">
+              <div class="plate-food rice"></div>
+              <div class="plate-food curry"></div>
+              <div class="plate-food greens"></div>
+            </div>
+            <div class="scene-card waste">
+              <span>♧</span>
+              <div><strong>−28%</strong><small>campus waste</small></div>
+            </div>
+            <div class="scene-card pickup">
+              <span>🎟</span>
+              <div><strong>Pickup ready</strong><small>Reserve a meal to unlock</small></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="top-grid">
+          <div class="card availability">
+            <div class="card-heading">
+              <div><small>CENTRAL HALL</small><h3>Live availability</h3></div>
+              <span class="live-badge"><i></i> Live</span>
+            </div>
+            <div class="availability-number"><strong>164</strong><span>portions active</span></div>
+            <div class="progress"><i></i></div>
+            <div class="availability-meta"><span>72% capacity</span><span>~18 min wait</span></div>
+            <hr>
+            <div class="refill">
+              <div class="mini-icon">◷</div>
+              <div><strong>Next refill</strong><span>Vegetable khichuri · 12:45 PM</span></div>
+              <b>›</b>
+            </div>
+          </div>
+
+          <div class="rescue">
+            <div class="rescue-icon">♧</div>
+            <div>
+              <small>RESCUE WINDOW</small>
+              <strong>7 surplus meals nearby</strong>
+              <p>Available for 25–40% less until 3:30 PM.</p>
+            </div>
+            <button id="rescueBtn">↗</button>
+          </div>
+        </section>
+
+        <section class="quick-stats">
+          <div><span class="stat-icon">♻</span><div><small>Meals rescued</small><strong>18</strong></div><em>+12%</em></div>
+          <div><span class="stat-icon">♧</span><div><small>Food waste avoided</small><strong>2.7 <i>kg</i></strong></div><em>+12%</em></div>
+          <div><span class="stat-icon">♨</span><div><small>Impact score</small><strong>840</strong></div><em>+12%</em></div>
+        </section>
+
+        <section class="main-grid">
+          <div>
+            <div class="section-heading">
+              <div><small>TODAY · 12:00–3:00 PM</small><h3>What's on the plate?</h3></div>
+              <button id="fullMenuBtn">See full menu ↗</button>
+            </div>
+
+            <div class="meal-grid" id="mealGrid"></div>
+          </div>
+
+          <aside class="impact-card">
+            <div class="card-heading">
+              <div><small>YOUR IMPACT</small><h3>Small habits, real change</h3></div>
+              <span>•••</span>
+            </div>
+            <div class="impact-dial"><div><strong>840</strong><span>impact pts</span></div></div>
+            <div class="impact-level"><strong>Gold plate status</strong><span>160 pts to Platinum</span></div>
+            <div class="progress impact-progress"><i></i></div>
+            <div class="impact-list">
+              <div><span>♻ Meals rescued</span><strong>18</strong></div>
+              <div><span>♧ Waste avoided</span><strong>2.7 kg</strong></div>
+              <div><span>♨ Streak</span><strong>6 days</strong></div>
+            </div>
+            <button class="impact-history" id="historyBtn">Open impact history ›</button>
+          </aside>
+        </section>
+
+        <footer>
+          <span>FOOD LOOP · Campus food, smarter.</span>
+          <span>Prototype UI · 2026</span>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast">
+    <span class="toast-check">✓</span>
+    <div><strong>Reservation updated</strong><small id="toastText"></small></div>
+    <button id="toastClose">×</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Student Portal — Food Loop</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="student.css">
+</head>
+
+<body>
+
+<div class="student-app">
+
+  <!-- ================= LOGIN ================= -->
+
+  <section class="screen login-screen" id="loginScreen">
+
+    <div class="login-brand">
+      <div class="brand-mark">🍴</div>
+
+      <div>
+        <strong>THE LAST PLATE</strong>
+        <span>Food. Smarter. Together.</span>
+      </div>
+    </div>
+
+
+    <div class="login-layout">
+
+      <div class="login-info">
+
+        <span class="eyebrow">
+          KUET STUDENT PORTAL
+        </span>
+
+        <h1>
+          Eat smarter.<br>
+          <em>Waste less.</em>
+        </h1>
+
+        <p>
+          Tell your cafeteria whether you'll eat tomorrow.
+          Your small decision helps the campus prepare the right
+          amount of food and reduce waste.
+        </p>
+
+        <div class="login-stats">
+
+          <div>
+            <strong>2.7kg</strong>
+            <span>food waste avoided</span>
+          </div>
+
+          <div>
+            <strong>18</strong>
+            <span>meals rescued</span>
+          </div>
+
+          <div>
+            <strong>96%</strong>
+            <span>forecast confidence</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="login-card">
+
+        <div class="login-card-top">
+          <span class="small-label">WELCOME BACK</span>
+          <h2>Student Login</h2>
+          <p>Use your KUET student credentials to continue.</p>
+        </div>
+
+
+        <form id="loginForm">
+
+          <label>
+            Student Roll
+            <input
+              id="rollInput"
+              type="text"
+              placeholder="e.g. 1907001"
+              required
+            >
+          </label>
+
+
+          <label>
+            Password
+            <input
+              id="passwordInput"
+              type="password"
+              placeholder="Enter your password"
+              required
+            >
+          </label>
+
+
+          <div class="remember-row">
+
+            <label class="checkbox">
+              <input type="checkbox">
+              <span>Remember me</span>
+            </label>
+
+            <button type="button" class="forgot">
+              Forgot password?
+            </button>
+
+          </div>
+
+
+          <button class="login-btn" type="submit">
+            Continue →
+          </button>
+
+        </form>
+
+
+        <p class="login-note">
+          🔒 Your meal choices are used only for cafeteria planning.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= INTERESTS ================= -->
+
+  <section class="screen onboarding-screen hidden" id="interestScreen">
+
+    <div class="onboarding-top">
+
+      <div class="login-brand">
+        <div class="brand-mark">🍴</div>
+
+        <div>
+          <strong>THE LAST PLATE</strong>
+          <span>Food. Smarter. Together.</span>
+        </div>
+      </div>
+
+      <span class="step">STEP 1 OF 2</span>
+
+    </div>
+
+
+    <div class="onboarding-content">
+
+      <span class="eyebrow">
+        PERSONALIZE YOUR EXPERIENCE
+      </span>
+
+      <h1>
+        What kind of meals<br>
+        <em>do you enjoy?</em>
+      </h1>
+
+      <p class="intro">
+        Select a few interests. We'll use them to show more relevant
+        meals and understand campus food demand better.
+      </p>
+
+
+      <div class="interest-grid">
+
+        <button class="interest" data-interest="Rice & Curry">
+          <span>🍛</span>
+          <strong>Rice & Curry</strong>
+          <small>Classic campus meals</small>
+        </button>
+
+        <button class="interest" data-interest="Chicken">
+          <span>🍗</span>
+          <strong>Chicken</strong>
+          <small>Chicken-based meals</small>
+        </button>
+
+        <button class="interest" data-interest="Vegetarian">
+          <span>🥗</span>
+          <strong>Vegetarian</strong>
+          <small>Fresh & plant-based</small>
+        </button>
+
+        <button class="interest" data-interest="Healthy">
+          <span>🥦</span>
+          <strong>Healthy</strong>
+          <small>Balanced meals</small>
+        </button>
+
+        <button class="interest" data-interest="Budget Friendly">
+          <span>৳</span>
+          <strong>Budget Friendly</strong>
+          <small>Student-friendly prices</small>
+        </button>
+
+        <button class="interest" data-interest="High Protein">
+          <span>💪</span>
+          <strong>High Protein</strong>
+          <small>Protein-rich meals</small>
+        </button>
+
+      </div>
+
+
+      <div class="onboarding-bottom">
+
+        <span id="interestCount">
+          Select at least 2 interests
+        </span>
+
+        <button id="interestContinue" disabled>
+          Continue →
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= TOMORROW ================= -->
+
+  <section class="screen meal-choice-screen hidden" id="mealChoiceScreen">
+
+    <div class="choice-wrapper">
+
+      <div class="choice-brand">
+
+        <div class="brand-mark">🍴</div>
+
+        <div>
+          <strong>THE LAST PLATE</strong>
+          <span>KUET Student Portal</span>
+        </div>
+
+      </div>
+
+
+      <div class="choice-card">
+
+        <span class="eyebrow">
+          STEP 2 OF 2 · TOMORROW
+        </span>
+
+        <div class="date-chip">
+          📅 Friday · 11 September
+        </div>
+
+        <h1>
+          Will you be eating<br>
+          <em>at the cafeteria tomorrow?</em>
+        </h1>
+
+        <p>
+          Your answer helps the cafeteria prepare the right amount
+          of food and avoid unnecessary waste.
+        </p>
+
+
+        <div class="choice-buttons">
+
+          <button class="meal-choice yes" data-choice="yes">
+
+            <span class="choice-icon">🍽</span>
+
+            <div>
+              <strong>Yes, I'll eat</strong>
+              <small>Count my meal for tomorrow</small>
+            </div>
+
+            <b>→</b>
+
+          </button>
+
+
+          <button class="meal-choice no" data-choice="no">
+
+            <span class="choice-icon">○</span>
+
+            <div>
+              <strong>No, not tomorrow</strong>
+              <small>Don't prepare a meal for me</small>
+            </div>
+
+            <b>→</b>
+
+          </button>
+
+        </div>
+
+
+        <div class="impact-message">
+
+          <span>🌱</span>
+
+          <div>
+            <strong>Why does this matter?</strong>
+
+            <p>
+              Every accurate response helps the cafeteria
+              predict demand and reduce food waste.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CONFIRMATION ================= -->
+
+  <section class="screen confirmation-screen hidden" id="confirmationScreen">
+
+    <div class="confirmation-card">
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <span class="eyebrow">
+        RESPONSE RECORDED
+      </span>
+
+      <h1 id="confirmationTitle">
+        You're counted in.
+      </h1>
+
+      <p id="confirmationText">
+        We've added your meal to tomorrow's cafeteria demand.
+      </p>
+
+
+      <div class="confirmation-summary">
+
+        <div>
+          <span>Student</span>
+          <strong id="studentRoll">1907001</strong>
+        </div>
+
+        <div>
+          <span>Tomorrow</span>
+          <strong id="choiceStatus">Meal confirmed</strong>
+        </div>
+
+        <div>
+          <span>Impact</span>
+          <strong>Demand updated ✓</strong>
+        </div>
+
+      </div>
+
+
+      <button id="dashboardBtn">
+        Go to Student Dashboard →
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= DASHBOARD ================= -->
+
+  <section class="dashboard-screen hidden" id="dashboardScreen">
+
+    <aside class="student-sidebar">
+
+      <div class="login-brand">
+
+        <div class="brand-mark">🍴</div>
+
+        <div>
+          <strong>THE LAST PLATE</strong>
+          <span>Food. Smarter. Together.</span>
+        </div>
+
+      </div>
+
+
+      <div class="student-campus">
+
+        <div>KU</div>
+
+        <span>
+          <strong>KUET Campus</strong>
+          Student dining network
+        </span>
+
+      </div>
+
+
+      <nav>
+
+        <small>STUDENT</small>
+
+        <button class="dash-nav active">
+          ✦ <span>Overview</span>
+        </button>
+
+        <button class="dash-nav">
+          🍴 <span>Today's Menu</span>
+        </button>
+
+        <button class="dash-nav">
+          🎟 <span>My Reservations</span>
+        </button>
+
+        <button class="dash-nav">
+          ♻ <span>Rescue Meals</span>
+        </button>
+
+        <button class="dash-nav">
+          ♧ <span>My Impact</span>
+        </button>
+
+      </nav>
+
+
+      <div class="student-sidebar-bottom">
+
+        <button id="adminPortalBtn" class="admin-switch">
+          ⚙
+          <span>
+            <strong>Admin Portal</strong>
+            <small>Cafeteria management</small>
+          </span>
+          →
+        </button>
+
+
+        <div class="student-user">
+
+          <div class="avatar">
+            SH
+          </div>
+
+          <span>
+            <strong id="dashRoll">Student</strong>
+            <small>Student account</small>
+          </span>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <main class="student-main">
+
+      <header class="student-header">
+
+        <div>
+          <small>STUDENT PORTAL · TODAY</small>
+
+          <h2>
+            Good morning, <span id="studentName">Sunzid</span>.
+          </h2>
+        </div>
+
+
+        <button class="header-notification">
+          🔔
+          <i></i>
+        </button>
+
+      </header>
+
+
+      <div class="dashboard-content">
+
+
+        <section class="dashboard-hero">
+
+          <div>
+
+            <span class="live-chip">
+              <i></i>
+              YOUR FOOD LOOP
+            </span>
+
+            <h1>
+              Your choices<br>
+              <em>shape tomorrow.</em>
+            </h1>
+
+            <p>
+              Thanks for helping KUET prepare smarter and waste less.
+            </p>
+
+          </div>
+
+
+          <div class="tomorrow-status">
+
+            <span>TOMORROW'S MEAL</span>
+
+            <strong id="dashboardChoice">
+              ✓ Confirmed
+            </strong>
+
+            <small>
+              Your response has been recorded.
+            </small>
+
+          </div>
+
+        </section>
+
+
+        <section class="dashboard-cards">
+
+
+          <div class="dashboard-card">
+
+            <span>🍽</span>
+
+            <small>
+              Meals this month
+            </small>
+
+            <strong>
+              18
+            </strong>
+
+            <em>
+              +12%
+            </em>
+
+          </div>
+
+
+          <div class="dashboard-card">
+
+            <span>♻</span>
+
+            <small>
+              Waste avoided
+            </small>
+
+            <strong>
+              2.7 kg
+            </strong>
+
+            <em>
+              +8%
+            </em>
+
+          </div>
+
+
+          <div class="dashboard-card">
+
+            <span>🔥</span>
+
+            <small>
+              Impact score
+            </small>
+
+            <strong>
+              840
+            </strong>
+
+            <em>
+              Gold
+            </em>
+
+          </div>
+
+
+        </section>
+
+
+        <section class="dashboard-grid">
+
+
+          <div class="recommendation-card">
+
+            <div class="section-heading">
+
+              <div>
+                <small>BASED ON YOUR INTERESTS</small>
+                <h3>Recommended for you</h3>
+              </div>
+
+              <span>→</span>
+
+            </div>
+
+
+            <div class="recommended-meals">
+
+              <article>
+                <div>🍛</div>
+
+                <strong>
+                  Chicken Biryani
+                </strong>
+
+                <small>
+                  ৳85 · Popular
+                </small>
+
+                <button>
+                  Reserve
+                </button>
+              </article>
+
+
+              <article>
+                <div>🥗</div>
+
+                <strong>
+                  Chicken Bowl
+                </strong>
+
+                <small>
+                  ৳95 · High protein
+                </small>
+
+                <button>
+                  Reserve
+                </button>
+              </article>
+
+
+              <article>
+                <div>🥣</div>
+
+                <strong>
+                  Vegetable Khichuri
+                </strong>
+
+                <small>
+                  ৳60 · Low waste
+                </small>
+
+                <button>
+                  Reserve
+                </button>
+              </article>
+
+            </div>
+
+          </div>
+
+
+          <div class="impact-mini">
+
+            <small>YOUR IMPACT</small>
+
+            <h3>
+              Small choice.<br>
+              Real difference.
+            </h3>
+
+            <div class="impact-number">
+              840
+              <span>pts</span>
+            </div>
+
+            <div class="impact-bar">
+              <i></i>
+            </div>
+
+            <p>
+              160 points to Platinum
+            </p>
+
+          </div>
+
+
+        </section>
+
+
+      </div>
+
+    </main>
+
+  </section>
+
+
+  <!-- TOAST -->
+
+  <div class="toast" id="toast">
+
+    <span>✓</span>
+
+    <div>
+      <strong>Food Loop</strong>
+      <small id="toastMessage"></small>
+    </div>
+
+  </div>
+
+</div>
+
+
+<script src="student.js"></script>
+
+</body>
+</html>
