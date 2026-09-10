@@ -21,6 +21,8 @@ const mealChoices = document.querySelectorAll(".meal-choice");
 
 const toast = document.getElementById("toast");
 const toastMessage = document.getElementById("toastMessage");
+const changeMealChoiceBtn =
+  document.getElementById("changeMealChoiceBtn");
 
 let selectedInterests = [];
 let mealChoice = "";
@@ -30,7 +32,7 @@ let mealChoice = "";
 // SCREEN SWITCH
 // ===============================
 
-function showScreen(screen){
+function showScreen(screen) {
 
   [
     loginScreen,
@@ -46,32 +48,74 @@ function showScreen(screen){
 }
 
 
-// ===============================
-// LOGIN
-// ===============================
-
-loginForm.addEventListener("submit", function(event){
+loginForm.addEventListener("submit", async function (event) {
 
   event.preventDefault();
 
   const roll = rollInput.value.trim();
   const password = passwordInput.value.trim();
 
-  if(!roll || !password){
+  if (!roll || !password) {
     showToast("Please enter your roll and password.");
     return;
   }
 
-  localStorage.setItem(
-    "foodLoopStudentRoll",
-    roll
-  );
+  try {
 
-  document.getElementById("studentRoll").textContent = roll;
-  document.getElementById("dashRoll").textContent =
-    `Student ${roll}`;
+    const response = await fetch(
+      "http://127.0.0.1:5000/api/student/login",
+      {
+        method: "POST",
 
-  showScreen(interestScreen);
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          roll: roll,
+          password: password
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!data.success) {
+
+      showToast(data.message || "Login failed.");
+      return;
+
+    }
+
+    // Save student roll locally
+    localStorage.setItem(
+      "foodLoopStudentRoll",
+      roll
+    );
+
+    document.getElementById("studentRoll").textContent =
+      roll;
+
+    document.getElementById("dashRoll").textContent =
+      `Student ${roll}`;
+
+    console.log(
+      data.new_student
+        ? "New student registered successfully."
+        : "Existing student logged in successfully."
+    );
+
+    showScreen(interestScreen);
+
+  } catch (error) {
+
+    console.error("Login error:", error);
+
+    showToast(
+      "Could not connect to the server."
+    );
+
+  }
 
 });
 
@@ -86,14 +130,14 @@ interestButtons.forEach(button => {
 
     const interest = button.dataset.interest;
 
-    if(selectedInterests.includes(interest)){
+    if (selectedInterests.includes(interest)) {
 
       selectedInterests =
         selectedInterests.filter(item => item !== interest);
 
       button.classList.remove("selected");
 
-    }else{
+    } else {
 
       selectedInterests.push(interest);
 
@@ -108,18 +152,18 @@ interestButtons.forEach(button => {
 });
 
 
-function updateInterestButton(){
+function updateInterestButton() {
 
   const count = selectedInterests.length;
 
-  if(count < 2){
+  if (count < 2) {
 
     interestCount.textContent =
-      `Select ${2 - count} more interest${2-count > 1 ? "s" : ""}`;
+      `Select ${2 - count} more interest${2 - count > 1 ? "s" : ""}`;
 
     interestContinue.disabled = true;
 
-  }else{
+  } else {
 
     interestCount.textContent =
       `${count} interests selected ✓`;
@@ -168,12 +212,61 @@ mealChoices.forEach(button => {
 });
 
 
-function saveMealChoice(){
+async function saveMealChoice() {
 
-  localStorage.setItem(
-    "foodLoopTomorrowMeal",
-    mealChoice
-  );
+  const roll =
+    localStorage.getItem("foodLoopStudentRoll");
+
+  try {
+
+    const response = await fetch(
+      "http://127.0.0.1:5000/api/meal-choice",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          roll: roll,
+          choice: mealChoice,
+          interests: selectedInterests
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+
+      localStorage.setItem(
+        "foodLoopTomorrowMeal",
+        mealChoice
+      );
+
+      console.log(
+        "Meal choice saved to MongoDB:",
+        data
+      );
+
+    } else {
+
+      console.error(
+        "Failed to save meal choice:",
+        data
+      );
+
+    }
+
+  } catch (error) {
+
+    console.error(
+      "Backend connection error:",
+      error
+    );
+
+  }
 
 }
 
@@ -182,7 +275,7 @@ function saveMealChoice(){
 // CONFIRMATION
 // ===============================
 
-function updateConfirmation(){
+function updateConfirmation() {
 
   const title =
     document.getElementById("confirmationTitle");
@@ -193,7 +286,7 @@ function updateConfirmation(){
   const status =
     document.getElementById("choiceStatus");
 
-  if(mealChoice === "yes"){
+  if (mealChoice === "yes") {
 
     title.textContent =
       "You're counted in.";
@@ -204,7 +297,7 @@ function updateConfirmation(){
     status.textContent =
       "✓ Meal confirmed";
 
-  }else{
+  } else {
 
     title.textContent =
       "Thanks for letting us know.";
@@ -238,19 +331,50 @@ document
     document.getElementById("studentName").textContent =
       roll === "1907001" ? "Sunzid" : `Student ${roll}`;
 
-    if(mealChoice === "no"){
+    const dashboardChoice =
+      document.getElementById("dashboardChoice");
 
-      document.getElementById("dashboardChoice").textContent =
+    const dashboardChoiceText =
+      document.getElementById("dashboardChoiceText");
+
+    if (mealChoice === "yes") {
+
+      dashboardChoice.textContent =
+        "✓ Confirmed";
+
+      dashboardChoiceText.textContent =
+        "Your response has been recorded.";
+
+    } else if (mealChoice === "no") {
+
+      dashboardChoice.textContent =
         "✓ Not eating";
 
-    }else{
+      dashboardChoiceText.textContent =
+        "The cafeteria won't prepare a meal for you.";
 
-      document.getElementById("dashboardChoice").textContent =
-        "✓ Confirmed";
+    } else {
+
+      dashboardChoice.textContent =
+        "Not selected";
+
+      dashboardChoiceText.textContent =
+        "You haven't selected your meal yet.";
 
     }
 
     showScreen(dashboardScreen);
+
+  });
+  // ===============================
+// CHANGE MEAL CHOICE
+// ===============================
+
+document
+  .getElementById("changeMealChoiceBtn")
+  .addEventListener("click", () => {
+
+    showScreen(mealChoiceScreen);
 
   });
 
@@ -274,7 +398,7 @@ document
 
 let toastTimer;
 
-function showToast(message){
+function showToast(message) {
 
   toastMessage.textContent = message;
 
@@ -306,19 +430,19 @@ const savedInterests =
 const savedMeal =
   localStorage.getItem("foodLoopTomorrowMeal");
 
-if(savedRoll){
+if (savedRoll) {
 
   rollInput.value = savedRoll;
 
 }
 
-if(savedInterests.length){
+if (savedInterests.length) {
 
   selectedInterests = savedInterests;
 
   interestButtons.forEach(button => {
 
-    if(selectedInterests.includes(button.dataset.interest)){
+    if (selectedInterests.includes(button.dataset.interest)) {
 
       button.classList.add("selected");
 
@@ -330,7 +454,7 @@ if(savedInterests.length){
 
 }
 
-if(savedMeal){
+if (savedMeal) {
 
   mealChoice = savedMeal;
 

@@ -372,6 +372,50 @@
 .toggle-btn.off:hover {
     background: #15803d;
 }
+/* ================= MEAL INTENTIONS ================= */
+
+.intentions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.intention-card {
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.intention-number {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.intention-label {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.intention-yes .intention-number {
+    color: #16a34a;
+}
+
+.intention-no .intention-number {
+    color: #dc2626;
+}
+
+.intention-pending .intention-number {
+    color: #d97706;
+}
+
+@media (max-width: 800px) {
+    .intentions-grid {
+        grid-template-columns: 1fr;
+    }
+}
     </style>
 </head>
 
@@ -429,8 +473,8 @@
                         Expected Students
                     </div>
 
-                    <div class="card-number">
-                        420
+                    <div class="card-number" id="expectedStudents">
+                    0
                     </div>
 
                     <div class="card-small">
@@ -446,10 +490,9 @@
                         Prepared Meals
                     </div>
 
-                    <div class="card-number">
-                        400
+                    <div class="card-number" >
+                    0
                     </div>
-
                     <div class="card-small">
                         95% of predicted demand
                     </div>
@@ -476,6 +519,66 @@
             </div>
 
         </section>
+        <!-- ================= MEAL INTENTIONS ================= -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🍽️ Meal Intentions
+    </h2>
+
+    <div class="intentions-grid">
+
+        <div class="intention-card intention-yes">
+
+            <div
+                class="intention-number"
+                id="yesCount"
+            >
+                0
+            </div>
+
+            <div class="intention-label">
+                Will Eat
+            </div>
+
+        </div>
+
+
+        <div class="intention-card intention-no">
+
+            <div
+                class="intention-number"
+                id="noCount"
+            >
+                0
+            </div>
+
+            <div class="intention-label">
+                Won't Eat
+            </div>
+
+        </div>
+
+
+        <div class="intention-card intention-pending">
+
+            <div
+                class="intention-number"
+                id="pendingCount"
+            >
+                0
+            </div>
+
+            <div class="intention-label">
+                Pending
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
        <!-- ================= TODAY'S MEAL ================= -->
@@ -552,8 +655,8 @@
                         Predicted demand for tomorrow
                     </p>
 
-                    <div class="prediction-number">
-                        410 meals
+                    <div class="prediction-number" id="predictedDemand">
+                    0 meals
                     </div>
 
                     <p class="confidence">
@@ -563,8 +666,8 @@
                     <br>
 
                     <p>
-                        Recommended preparation:
-                        <strong>425 meals</strong>
+                       Recommended preparation:
+                    <strong id="recommendedPreparation">0 meals</strong>
                     </p>
 
                 </div>
@@ -807,6 +910,55 @@
         function viewAnalytics() {
             alert("Analytics dashboard will open here.");
         }
+        async function loadAdminStats() {
+
+    try {
+
+        const response = await fetch(
+            "http://127.0.0.1:5000/api/admin/stats"
+        );
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch admin stats");
+        }
+
+        const data = await response.json();
+
+        console.log("Admin stats:", data);
+
+        // Expected Students
+        document.getElementById("expectedStudents").textContent =
+            data.expected_students;
+        document.getElementById("yesCount").textContent =
+    data.yes;
+
+document.getElementById("noCount").textContent =
+    data.no;
+
+document.getElementById("pendingCount").textContent =
+    data.pending;
+
+        // Predicted demand
+        document.getElementById("predictedDemand").textContent =
+            data.expected_students + " meals";
+
+        // Recommended preparation: 5% buffer
+        const recommended =
+            Math.ceil(data.expected_students * 1.05);
+
+        document.getElementById("recommendedPreparation").textContent =
+            recommended + " meals";
+
+    } catch (error) {
+
+        console.error("Admin stats error:", error);
+
+    }
+}
+
+
+// Load stats when Admin Portal opens
+loadAdminStats();
 
     </script>
 
