@@ -233,11 +233,15 @@ The dashboard includes:
 # 🔌 Backend API
 
 The Flask backend provides API endpoints for communication between the frontend and database.
+markdown
 
 ### Student Login
 
 ```http
 POST /api/student/login
+```
+
+
 
 
 
