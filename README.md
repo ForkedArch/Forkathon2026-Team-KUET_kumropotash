@@ -1,6 +1,6 @@
 <img src="https://i.ibb.co.com/7NrtB6Vv/image.png" />
 
-# Forkathon 2026: FOOD LOOP by [KUET_KUMROPOTASH]
+# Forkathon 2026: "FOOD LOOP" by [KUET_KUMROPOTASH]
 
 > Built for ForkedArch Freshers Hackathon 2026
 
