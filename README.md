@@ -11,16 +11,18 @@ Built for **ForkedArch Freshers Hackathon 2026**.
 
 ---
 
-## 👥 Team KUET_KUMROPOTASH
+## 👥 Team Members & Contributions
 
-| Name | Roll | Department | GitHub |
-|---|---:|---|---|
-| **Durja Das** | 52507021 | CSE | [durjadas12-eng](https://github.com/durjadas12-eng) |
-| **Farha Afsin Mahi** | 52507048 | CSE | [mahioops](https://github.com/mahioops) |
-| **M. Sunzid Haque** | 52507012 | CSE | [sunzid874-code](https://github.com/sunzid874-code) |
-| **Md. Siam Ahmmed** | 52507073 | CSE | [ahmmedsiam287-bot](https://github.com/ahmmedsiam287-bot) |
+| Name | Roll | Department | GitHub | Contribution |
+|------|------|------------|--------|--------------|
+| **Durja Das** | 52507021 | CSE | [durjadas12-eng](https://github.com/durjadas12-eng) | Backend development, frontend modifications, API integration, voice-related work, debugging & system integration |
+| **Farha Afsin Mahi** | 52507048 | CSE | [mahioops](https://github.com/mahioops) | Admin Portal development, presentation video production, voice-over & project demonstration |
+| **M. Sunzid Haque** | 52507012 | CSE | [sunzid874-code](https://github.com/sunzid874-code) | Frontend development, UI implementation, system architecture & application flow |
+| **Md. Siam Ahmmed** | 52507073 | CSE | [ahmmedsiam287-bot](https://github.com/ahmmedsiam287-bot) | Video editing, README/documentation editing, presentation support & project content refinement |
 
 ---
+
+
 
 # 🎥 Presentation
 
