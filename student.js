@@ -1,4 +1,12 @@
 // ===============================
+// API CONFIGURATION
+// ===============================
+
+const API_URL =
+  "https://forkathon2026-team-kuet-kumropotash.onrender.com";
+
+
+// ===============================
 // ELEMENTS
 // ===============================
 
@@ -21,6 +29,7 @@ const mealChoices = document.querySelectorAll(".meal-choice");
 
 const toast = document.getElementById("toast");
 const toastMessage = document.getElementById("toastMessage");
+
 const changeMealChoiceBtn =
   document.getElementById("changeMealChoiceBtn");
 
@@ -41,12 +50,23 @@ function showScreen(screen) {
     confirmationScreen,
     dashboardScreen
   ].forEach(item => {
-    item.classList.add("hidden");
+
+    if (item) {
+      item.classList.add("hidden");
+    }
+
   });
 
-  screen.classList.remove("hidden");
+  if (screen) {
+    screen.classList.remove("hidden");
+  }
+
 }
 
+
+// ===============================
+// STUDENT LOGIN
+// ===============================
 
 loginForm.addEventListener("submit", async function (event) {
 
@@ -56,14 +76,18 @@ loginForm.addEventListener("submit", async function (event) {
   const password = passwordInput.value.trim();
 
   if (!roll || !password) {
+
     showToast("Please enter your roll and password.");
+
     return;
+
   }
+
 
   try {
 
     const response = await fetch(
-      "http://127.0.0.1:5000/api/student/login",
+      `${API_URL}/api/student/login`,
       {
         method: "POST",
 
@@ -78,14 +102,29 @@ loginForm.addEventListener("submit", async function (event) {
       }
     );
 
+
+    if (!response.ok) {
+
+      throw new Error(
+        `Server returned ${response.status}`
+      );
+
+    }
+
+
     const data = await response.json();
+
 
     if (!data.success) {
 
-      showToast(data.message || "Login failed.");
+      showToast(
+        data.message || "Login failed."
+      );
+
       return;
 
     }
+
 
     // Save student roll locally
     localStorage.setItem(
@@ -93,11 +132,22 @@ loginForm.addEventListener("submit", async function (event) {
       roll
     );
 
-    document.getElementById("studentRoll").textContent =
-      roll;
 
-    document.getElementById("dashRoll").textContent =
-      `Student ${roll}`;
+    const studentRoll =
+      document.getElementById("studentRoll");
+
+    const dashRoll =
+      document.getElementById("dashRoll");
+
+
+    if (studentRoll) {
+      studentRoll.textContent = roll;
+    }
+
+    if (dashRoll) {
+      dashRoll.textContent = `Student ${roll}`;
+    }
+
 
     console.log(
       data.new_student
@@ -105,11 +155,16 @@ loginForm.addEventListener("submit", async function (event) {
         : "Existing student logged in successfully."
     );
 
+
     showScreen(interestScreen);
+
 
   } catch (error) {
 
-    console.error("Login error:", error);
+    console.error(
+      "Login error:",
+      error
+    );
 
     showToast(
       "Could not connect to the server."
@@ -128,12 +183,16 @@ interestButtons.forEach(button => {
 
   button.addEventListener("click", () => {
 
-    const interest = button.dataset.interest;
+    const interest =
+      button.dataset.interest;
+
 
     if (selectedInterests.includes(interest)) {
 
       selectedInterests =
-        selectedInterests.filter(item => item !== interest);
+        selectedInterests.filter(
+          item => item !== interest
+        );
 
       button.classList.remove("selected");
 
@@ -145,6 +204,7 @@ interestButtons.forEach(button => {
 
     }
 
+
     updateInterestButton();
 
   });
@@ -152,9 +212,15 @@ interestButtons.forEach(button => {
 });
 
 
+// ===============================
+// UPDATE INTEREST BUTTON
+// ===============================
+
 function updateInterestButton() {
 
-  const count = selectedInterests.length;
+  const count =
+    selectedInterests.length;
+
 
   if (count < 2) {
 
@@ -199,7 +265,9 @@ mealChoices.forEach(button => {
 
   button.addEventListener("click", () => {
 
-    mealChoice = button.dataset.choice;
+    mealChoice =
+      button.dataset.choice;
+
 
     saveMealChoice();
 
@@ -212,15 +280,33 @@ mealChoices.forEach(button => {
 });
 
 
+// ===============================
+// SAVE MEAL CHOICE TO BACKEND
+// ===============================
+
 async function saveMealChoice() {
 
   const roll =
-    localStorage.getItem("foodLoopStudentRoll");
+    localStorage.getItem(
+      "foodLoopStudentRoll"
+    );
+
+
+  if (!roll) {
+
+    console.error(
+      "Student roll not found."
+    );
+
+    return;
+
+  }
+
 
   try {
 
     const response = await fetch(
-      "http://127.0.0.1:5000/api/meal-choice",
+      `${API_URL}/api/meal-choice`,
       {
         method: "POST",
 
@@ -229,14 +315,30 @@ async function saveMealChoice() {
         },
 
         body: JSON.stringify({
+
           roll: roll,
+
           choice: mealChoice,
+
           interests: selectedInterests
+
         })
       }
     );
 
-    const data = await response.json();
+
+    if (!response.ok) {
+
+      throw new Error(
+        `Server returned ${response.status}`
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
 
     if (data.success) {
 
@@ -244,6 +346,7 @@ async function saveMealChoice() {
         "foodLoopTomorrowMeal",
         mealChoice
       );
+
 
       console.log(
         "Meal choice saved to MongoDB:",
@@ -258,6 +361,7 @@ async function saveMealChoice() {
       );
 
     }
+
 
   } catch (error) {
 
@@ -278,13 +382,20 @@ async function saveMealChoice() {
 function updateConfirmation() {
 
   const title =
-    document.getElementById("confirmationTitle");
+    document.getElementById(
+      "confirmationTitle"
+    );
 
   const text =
-    document.getElementById("confirmationText");
+    document.getElementById(
+      "confirmationText"
+    );
 
   const status =
-    document.getElementById("choiceStatus");
+    document.getElementById(
+      "choiceStatus"
+    );
+
 
   if (mealChoice === "yes") {
 
@@ -322,20 +433,50 @@ document
   .addEventListener("click", () => {
 
     const roll =
-      localStorage.getItem("foodLoopStudentRoll") ||
-      "1907001";
+      localStorage.getItem(
+        "foodLoopStudentRoll"
+      ) || "1907001";
 
-    document.getElementById("dashRoll").textContent =
-      `Student ${roll}`;
 
-    document.getElementById("studentName").textContent =
-      roll === "1907001" ? "Sunzid" : `Student ${roll}`;
+    const dashRoll =
+      document.getElementById(
+        "dashRoll"
+      );
+
+    const studentName =
+      document.getElementById(
+        "studentName"
+      );
+
+
+    if (dashRoll) {
+
+      dashRoll.textContent =
+        `Student ${roll}`;
+
+    }
+
+
+    if (studentName) {
+
+      studentName.textContent =
+        roll === "1907001"
+          ? "Sunzid"
+          : `Student ${roll}`;
+
+    }
+
 
     const dashboardChoice =
-      document.getElementById("dashboardChoice");
+      document.getElementById(
+        "dashboardChoice"
+      );
 
     const dashboardChoiceText =
-      document.getElementById("dashboardChoiceText");
+      document.getElementById(
+        "dashboardChoiceText"
+      );
+
 
     if (mealChoice === "yes") {
 
@@ -345,7 +486,9 @@ document
       dashboardChoiceText.textContent =
         "Your response has been recorded.";
 
-    } else if (mealChoice === "no") {
+    }
+
+    else if (mealChoice === "no") {
 
       dashboardChoice.textContent =
         "✓ Not eating";
@@ -353,7 +496,9 @@ document
       dashboardChoiceText.textContent =
         "The cafeteria won't prepare a meal for you.";
 
-    } else {
+    }
+
+    else {
 
       dashboardChoice.textContent =
         "Not selected";
@@ -363,10 +508,15 @@ document
 
     }
 
-    showScreen(dashboardScreen);
+
+    showScreen(
+      dashboardScreen
+    );
 
   });
-  // ===============================
+
+
+// ===============================
 // CHANGE MEAL CHOICE
 // ===============================
 
@@ -374,7 +524,9 @@ document
   .getElementById("changeMealChoiceBtn")
   .addEventListener("click", () => {
 
-    showScreen(mealChoiceScreen);
+    showScreen(
+      mealChoiceScreen
+    );
 
   });
 
@@ -387,7 +539,8 @@ document
   .getElementById("adminPortalBtn")
   .addEventListener("click", () => {
 
-    window.location.href = "admin.html";
+    window.location.href =
+      "admin.html";
 
   });
 
@@ -398,13 +551,18 @@ document
 
 let toastTimer;
 
+
 function showToast(message) {
 
-  toastMessage.textContent = message;
+  toastMessage.textContent =
+    message;
+
 
   toast.classList.add("show");
 
+
   clearTimeout(toastTimer);
+
 
   toastTimer = setTimeout(() => {
 
@@ -420,42 +578,70 @@ function showToast(message) {
 // ===============================
 
 const savedRoll =
-  localStorage.getItem("foodLoopStudentRoll");
+  localStorage.getItem(
+    "foodLoopStudentRoll"
+  );
+
 
 const savedInterests =
   JSON.parse(
-    localStorage.getItem("foodLoopInterests") || "[]"
+    localStorage.getItem(
+      "foodLoopInterests"
+    ) || "[]"
   );
 
+
 const savedMeal =
-  localStorage.getItem("foodLoopTomorrowMeal");
+  localStorage.getItem(
+    "foodLoopTomorrowMeal"
+  );
+
+
+// Restore roll
 
 if (savedRoll) {
 
-  rollInput.value = savedRoll;
+  rollInput.value =
+    savedRoll;
 
 }
 
+
+// Restore interests
+
 if (savedInterests.length) {
 
-  selectedInterests = savedInterests;
+  selectedInterests =
+    savedInterests;
+
 
   interestButtons.forEach(button => {
 
-    if (selectedInterests.includes(button.dataset.interest)) {
+    if (
+      selectedInterests.includes(
+        button.dataset.interest
+      )
+    ) {
 
-      button.classList.add("selected");
+      button.classList.add(
+        "selected"
+      );
 
     }
 
   });
 
+
   updateInterestButton();
 
 }
 
+
+// Restore meal choice
+
 if (savedMeal) {
 
-  mealChoice = savedMeal;
+  mealChoice =
+    savedMeal;
 
 }
