@@ -4,7 +4,7 @@
 
 > Built for ForkedArch Freshers Hackathon 2026
 
-## 👥 Teama
+## 👥 Team Members
 
 | Name              | Roll     | Department | GitHub           |
 | ------------------| -------- | ---------- | --------------   |
