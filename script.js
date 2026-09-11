@@ -12,6 +12,11 @@ const grid = document.getElementById("mealGrid");
 const navCount = document.getElementById("navCount");
 const toast = document.getElementById("toast");
 const toastText = document.getElementById("toastText");
+const BACKEND_URL = "https://forkathon2026-team-kuet-kumropotash.onrender.com";
+
+fetch(`${BACKEND_URL}/`)
+  .then(() => console.log("Backend is ready"))
+  .catch(() => console.log("Backend is waking up..."));
 
 
 // ===============================

@@ -6,6 +6,9 @@ import os
 
 app = Flask(__name__)
 CORS(app)
+@app.route("/api/health", methods=["GET"])
+def health():
+    return {"status": "ok"}, 200
 
 # ===============================
 # MONGODB CONNECTION
