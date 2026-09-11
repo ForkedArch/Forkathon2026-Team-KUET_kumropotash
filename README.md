@@ -892,6 +892,32 @@ And where surplus food gets a second chance before becoming waste.
 
 ---
 
+# 🤖 AI Assistance & Disclosure
+
+AI tools were used as supportive development and productivity tools during the hackathon.
+
+### Tools Used
+- **ChatGPT** — brainstorming, problem refinement, documentation, debugging assistance, code explanation, and UI/content improvement.
+- **AI-assisted development** — used selectively to help review and improve frontend/backend code and troubleshoot implementation issues.
+
+### How AI Was Used
+
+AI assistance was primarily used for:
+- 💡 Brainstorming and refining the Food Loop concept
+- 🧩 Discussing system architecture and implementation approaches
+- 🐛 Debugging and troubleshooting code
+- 🎨 Improving UI/UX ideas and interface content
+- 📝 Structuring and polishing project documentation and README
+- 🔍 Reviewing code and identifying potential issues
+
+The **project concept, feature selection, system decisions, implementation, integration, testing, and final submission were handled and reviewed by the team**.
+
+AI-generated suggestions were reviewed, adapted, tested, and integrated by the team where appropriate. The team remains responsible for the final code, functionality, accuracy, and originality of the project.
+
+> **AI was used as an assisting tool, not as a replacement for the team's technical decisions and implementation work.**
+
+---
+
 # 📌 Quick Links
 
 🌐 **Live Website**  
