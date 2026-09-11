@@ -36,32 +36,210 @@ And also maybe a solution if somehow leftover foods are there, the leftover food
 
 Brainstorming twist: Don't focus only on reducing food. Think about the entire journey from prediction → preparation → consumption → leftovers.
 
-### 🤔 [KUET_KUMROPOTASH]'s Understanding
+# 🍽️ KUET CampusMate — Food Loop
 
-Explain the problem in your own words. You may say a story mentioning your team member names!
+> A smart campus food management platform designed to reduce food waste, improve meal planning, and create a better dining experience for students and cafeteria management.
 
-What is the actual problem?
-Who experiences it?
-Why does it matter?
+🌐 **Live Website:**  
+https://forkedarch.github.io/Forkathon2026-Team-KUET_kumropotash/
+
+---
+
+## 🚀 About the Project
+
+**KUET CampusMate — Food Loop** is a smart campus dining solution developed for the **KUET Hackathon**.
+
+The platform connects students with campus cafeteria services through a simple digital interface. Students can provide their meal preferences, reserve meals, discover surplus food offers, and track their impact.
+
+At the same time, cafeteria administrators can use student responses to estimate meal demand and make better preparation decisions.
+
+The main goal is simple:
+
+> **Prepare what students need, reduce what gets wasted.**
+
+---
+
+## 🎯 Problem We Are Solving
+
+Campus cafeterias often face a major challenge:
+
+- ❌ Uncertainty about how many students will eat
+- ❌ Over-preparation of food
+- ❌ Food wastage
+- ❌ Difficulty tracking student meal preferences
+- ❌ Lack of a simple digital reservation system
+- ❌ Surplus food going unused
+
+Food Loop addresses these problems by collecting student meal information and providing useful demand insights to cafeteria management.
 
 ---
 
 ## 💡 Our Solution
-Predict before preparing. Rescue before wasting.
 
-### Overview
+Food Loop provides a centralized platform where:
 
-Describe your proposed solution.
+### 👨‍🎓 Students can
 
-### How It Works
+- Login using their student roll and password
+- Select personal interests
+- Submit tomorrow's meal requirement
+- Browse available meals
+- Reserve meals
+- Receive reservation/pickup tokens
+- Discover surplus food rescue offers
+- View their personal food impact
+- Access their student dashboard
 
-Explain the complete flow of your system.
+### 👨‍💼 Administrators can
 
-1.
-2.
-3.
+- Access the Admin Portal
+- View expected student demand
+- Monitor Yes / No meal responses
+- Track pending responses
+- Estimate required meal preparation
+- View food rescue/surplus information
 
 ---
+
+# ✨ Key Features
+
+## 🔐 Student Login
+
+Students can securely enter their roll number and password to access the platform.
+
+New students can also be registered automatically through the backend.
+
+---
+
+## 🍛 Tomorrow's Meal Prediction
+
+Students can tell the cafeteria whether they require a meal for the following day.
+
+The response is stored in the database and contributes to overall demand estimation.
+
+This helps the cafeteria prepare a more appropriate amount of food.
+
+---
+
+## 🥗 Personalized Interests
+
+Students can select multiple interests during onboarding.
+
+These preferences can be used to improve future personalization and recommendation features.
+
+---
+
+## 🎟️ Meal Reservation
+
+Students can browse available meals including:
+
+- Chicken Biryani
+- Vegetable Khichuri
+- Grilled Chicken Bowl
+
+Each meal contains information such as:
+
+- Price
+- Availability
+- Pickup time
+- Category/tag
+- Meal description
+
+Students can reserve a meal directly from the dashboard.
+
+---
+
+## ♻️ Food Rescue
+
+The platform supports a **Food Rescue** concept for surplus meals.
+
+Cafeteria administrators can publish surplus food offers containing:
+
+- Food name
+- Discount percentage
+- Available quantity
+- Rescue time window
+- Location
+
+Students can then discover available surplus meals and help reduce food waste.
+
+---
+
+## 📊 Admin Demand Dashboard
+
+The Admin Portal provides cafeteria management with useful demand information such as:
+
+- Expected students
+- Confirmed meal requirements
+- Students not requiring meals
+- Pending responses
+- Predicted meal demand
+- Recommended preparation quantity
+
+This transforms student responses into actionable cafeteria data.
+
+---
+
+## 📱 Responsive Student Dashboard
+
+The student portal is designed to provide a clean and responsive experience across desktop and mobile devices.
+
+The dashboard includes:
+
+- Today's menu
+- Meal reservations
+- Rescue meals
+- Personal impact
+- Notifications
+- Student information
+- Quick actions
+
+---
+
+# 🛠️ Technology Stack
+
+## Frontend
+
+- **HTML5** — Structure and page layout
+- **CSS3** — Styling, responsive design and UI
+- **JavaScript (ES6+)** — Interactions, API communication and dynamic content
+- **LocalStorage** — Client-side session and preference persistence
+
+## Backend
+
+- **Python**
+- **Flask** — REST API and server-side application
+- **Flask-CORS** — Cross-Origin Resource Sharing
+- **Gunicorn** — Production WSGI server
+
+## Database
+
+- **MongoDB Atlas**
+- **PyMongo** — MongoDB integration with Flask
+
+## Environment & Configuration
+
+- **python-dotenv**
+- Environment variables for sensitive configuration such as database credentials
+
+## Deployment
+
+- **GitHub Pages** — Frontend hosting
+- **Render** — Backend deployment
+- **MongoDB Atlas** — Cloud database
+
+---
+
+# 🔌 Backend API
+
+The Flask backend provides API endpoints for communication between the frontend and database.
+
+### Student Login
+
+```http
+POST /api/student/login
+
+
 
 ## 🏗️ System Architecture
 
